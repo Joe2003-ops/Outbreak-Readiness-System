@@ -64,3 +64,15 @@ This system aggregates open datasets across four core pillars:
 ### Prerequisites
 
 Ensure you have Python 3.10 or higher installed.
+
+### Run the local dashboard
+
+Install the packages listed in `requirements.txt`, then run the CRISP-DM notebook once to create the cleaned facility inventory and county summaries. Start the dashboard from the project root:
+
+```bash
+streamlit run app.py
+```
+
+The app provides an overview map, county profiles, a searchable mapped-facility inventory, missing-field summaries, and CSV downloads for filtered records. It reports mapped coverage only. It does not calculate a validated outbreak-readiness score because the local project does not contain facility-level readiness assessment data. Missing map tags are shown as unrecorded, not as unavailable services or capacity.
+
+The app uses `reports/crisp_dm/kenya_facilities_cleaned_inventory.geojson` when available and falls back to `Datasets/kenya.geojson`. County assignment uses `Datasets/kenya_counties.geojson`.
